@@ -1,10 +1,17 @@
 import React from 'react';
 
+import ApolloClient from 'apollo-boost';
+import { ApolloProvider } from 'react-apollo';
 import { render } from 'react-dom';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import reportWebVitals from './reportWebVitals';
 import { AppHeader, Home, Login } from './sections';
+
+// "proxy": "http://localhost:8000" in package.json
+const client = new ApolloClient({
+  uri: '/api',
+});
 
 const App = () => {
   return (
@@ -21,7 +28,12 @@ const App = () => {
   );
 };
 
-render(<App />, document.getElementById('root'));
+render(
+  <ApolloProvider client={client}>
+    <App />
+  </ApolloProvider>,
+  document.getElementById('root')
+);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
