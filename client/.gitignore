@@ -24,3 +24,5 @@ yarn-error.log*
 
 # codegen
 schema.json
+globalTypes.ts
+__generated__/
