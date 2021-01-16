@@ -24,7 +24,8 @@ export const Login = ({ setViewer }: Props) => {
   const client = useApolloClient();
   const [logIn, { data, loading, error }] = useMutation<LogInData, LogInVariables>(LOG_IN, {
     onCompleted: (data) => {
-      if (data && data.logIn) {
+      if (data && data.logIn && data.logIn.token) {
+        sessionStorage.setItem('token', data.logIn.token);
         setViewer(data.logIn);
         <h3>{lang.onCompleted}</h3>;
       }
