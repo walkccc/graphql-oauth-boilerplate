@@ -12,14 +12,20 @@ import {
 } from '../../lib/graphql/mutations/LogIn/__generated__/LogIn';
 import { AUTH_URL } from '../../lib/graphql/queries';
 import { AuthUrl as AuthUrlData } from '../../lib/graphql/queries/AuthUrl/__generated__/AuthUrl';
+import { Viewer } from '../../lib/types';
+
+interface Props {
+  setViewer: (viewer: Viewer) => void;
+}
 
 const { LOGIN: lang } = appStrings;
 
-export const Login = () => {
+export const Login = ({ setViewer }: Props) => {
   const client = useApolloClient();
   const [logIn, { data, loading, error }] = useMutation<LogInData, LogInVariables>(LOG_IN, {
     onCompleted: (data) => {
       if (data && data.logIn) {
+        setViewer(data.logIn);
         <h3>{lang.onCompleted}</h3>;
       }
     },
