@@ -6,7 +6,7 @@ import { render } from 'react-dom';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import reportWebVitals from './reportWebVitals';
-import { AppHeader, Home, Login } from './sections';
+import { AppHeader, Home, Login, User } from './sections';
 
 // "proxy": "http://localhost:8000" in package.json
 const client = new ApolloClient({
@@ -22,6 +22,7 @@ const App = () => {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />
+          <Route exact path="/user/:id" component={User} />
         </Switch>
       </BrowserRouter>
     </div>
