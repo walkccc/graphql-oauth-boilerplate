@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "GraphQL OAuth Boilerplate",
+  "name": "GraphQL OAuth Boilerplate",
   "icons": [
     {
       "src": "favicon.ico",
